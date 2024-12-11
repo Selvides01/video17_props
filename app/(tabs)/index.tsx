@@ -1,55 +1,44 @@
-import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
-class MateriFlexBox extends Component {
-  render() {
-    return (
-      <View style={{ padding: 10 }}>
-        {/* Flexbox untuk kotak warna-warni */}
-        <View
-          style={{
-            flexDirection: 'row',
-            backgroundColor: '#c8d6e5',
-            alignItems: 'center', 
-            justifyContent: 'flex-end',
-          }}
-        >
-          <View style={{ backgroundColor: '#ee5253', width: 50, height: 100 }} />
-          <View style={{ backgroundColor: '#feca57', width: 50, height: 100 }} />
-          <View style={{ backgroundColor: '#1dd1a1', width: 50, height: 100 }} />
-          <View style={{ backgroundColor: '#5f27cd', width: 50, height: 100 }} />
-        </View>
+const Story = props => {
+  return (
+    <View style={{ alignItems: 'center', marginRight: 20 }}>
+      <Image
+        source={{ uri: props.gambar }}
+        style={{ width: 70, height: 70, borderRadius: 70 / 2 }}
+      />
+      <Text style={{ maxWidth: 50, textAlign: 'center' }}>{props.judul}</Text>
+    </View>
+  );
+};
 
-        {/* Menu teks */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Text>Beranda</Text>
-          <Text>Video</Text> 
-          <Text>Playlist</Text>
-          <Text>Komunitas</Text>
-          <Text>Channel</Text> 
-          <Text>Tentang</Text>
-        </View>
-
-
-        <View style={{  alignItems: 'center', justifyContent: 'flex-start', marginTop: 20 }}>
-          <Image
-            source={{
-              uri: 'https://i.pinimg.com/736x/51/ba/fa/51bafae3ff3c7d175d9efad4cf2a3da2.jpg',
-            }}
-            style={{
-              width: 100,
-              height: 100,
-              borderRadius: 50,
-            }}
+const PropsDinamis = () => {
+  return (
+    <View>
+      <Text>Materi Component Dinamis dengan Props</Text>
+      <ScrollView horizontal>
+        <View style={{ flexDirection: 'row' }}>
+          <Story 
+            judul="Youtube Channel" 
+            gambar="https://www.gstatic.com/webp/gallery/1.jpg" 
           />
-          <View>
-            <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'blue' }}>Selvi Desti Riyani</Text> 
-            <Text>3 JT subscriber</Text> 
-          </View>
+          <Story 
+            judul="Kelas Online" 
+            gambar="https://cdn.pixabay.com/photo/2020/09/01/18/01/online-education-5535405_960_720.jpg" 
+          />
+          <Story 
+            judul="Kabayan Coding" 
+            gambar="https://cdn.pixabay.com/photo/2015/06/24/15/45/code-820275_960_720.jpg" 
+          />
+          <Story 
+            judul="Shoot" 
+            gambar="https://cdn.pixabay.com/photo/2017/08/30/01/18/camera-2690732_960_720.jpg" 
+          />
         </View>
-      </View>
-    );
-  }
-}
+      </ScrollView>
+    </View>
+  );
+};
 
-export default MateriFlexBox;
+export default PropsDinamis;
